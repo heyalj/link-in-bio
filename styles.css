@@ -212,6 +212,123 @@ body {
   text-align: left;
 }
 
+.now-playing {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.np-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.np-card:hover {
+  transform: translateY(-2px);
+  background: var(--btn-bg-hover);
+  border-color: #1ed760;
+  box-shadow: 0 10px 24px var(--btn-shadow);
+}
+
+.np-art {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1ed760, #0a8f3f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(30, 215, 96, 0.3);
+}
+
+.np-equalizer {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+}
+
+.np-equalizer span {
+  width: 3px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 2px;
+  animation: eq-bounce 1s ease-in-out infinite;
+}
+
+.np-equalizer span:nth-child(1) { height: 60%; animation-delay: -0.4s; }
+.np-equalizer span:nth-child(2) { height: 100%; animation-delay: -0.2s; }
+.np-equalizer span:nth-child(3) { height: 40%; animation-delay: -0.6s; }
+.np-equalizer span:nth-child(4) { height: 80%; animation-delay: -0.1s; }
+
+@keyframes eq-bounce {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
+}
+
+.np-equalizer span {
+  transform-origin: bottom;
+}
+
+.np-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.np-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1ed760;
+}
+
+.np-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.np-artist {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.np-spotify {
+  font-size: 18px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-equalizer span { animation: none; transform: scaleY(0.7); }
+}
+
 .footer {
   margin-top: 14px;
   font-size: 13px;
