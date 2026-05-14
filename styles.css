@@ -1,0 +1,241 @@
+@import url('https://fonts.cdnfonts.com/css/avenir-next-lt-pro');
+
+:root {
+  --bg-start: #0b0d12;
+  --bg-mid: #161a25;
+  --bg-end: #1f1530;
+  --card-bg: rgba(24, 26, 34, 0.72);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text: #f4f4f6;
+  --text-muted: #b5b8c2;
+  --btn-bg: rgba(255, 255, 255, 0.06);
+  --btn-bg-hover: rgba(255, 255, 255, 0.12);
+  --btn-border: rgba(255, 255, 255, 0.1);
+  --btn-shadow: rgba(0, 0, 0, 0.4);
+  --avatar-bg: linear-gradient(135deg, #6f7df0, #b96fe0);
+  --toggle-bg: rgba(255, 255, 255, 0.08);
+  --accent: #8a9cff;
+}
+
+[data-theme="light"] {
+  --bg-start: #f3f1ee;
+  --bg-mid: #ffffff;
+  --bg-end: #e9e3f5;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(0, 0, 0, 0.06);
+  --text: #15161b;
+  --text-muted: #4f525c;
+  --btn-bg: rgba(0, 0, 0, 0.04);
+  --btn-bg-hover: rgba(0, 0, 0, 0.08);
+  --btn-border: rgba(0, 0, 0, 0.08);
+  --btn-shadow: rgba(0, 0, 0, 0.08);
+  --avatar-bg: linear-gradient(135deg, #5c6bf0, #a76fe0);
+  --toggle-bg: rgba(0, 0, 0, 0.06);
+  --accent: #5a6bff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--bg-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1100px 600px at 10% 10%, var(--bg-end), transparent 60%),
+    radial-gradient(900px 600px at 90% 80%, var(--bg-start), transparent 55%),
+    linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+  background-size: 200% 200%;
+  animation: drift 18s ease-in-out infinite;
+  transition: background 0.4s ease;
+}
+
+@keyframes drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--btn-border);
+  background: var(--toggle-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  background: var(--btn-bg-hover);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  padding: 40px 32px 28px;
+  border-radius: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 20px 60px var(--btn-shadow);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--avatar-bg);
+  border: 2px solid var(--card-border);
+  box-shadow: 0 8px 24px var(--btn-shadow);
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.bio {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 38ch;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.link-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.link-btn:hover {
+  transform: translateY(-2px);
+  background: var(--btn-bg-hover);
+  border-color: var(--accent);
+  box-shadow: 0 10px 24px var(--btn-shadow);
+}
+
+.link-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.link-btn:active {
+  transform: translateY(0);
+}
+
+.link-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.link-label {
+  flex: 1;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 22px 24px;
+    border-radius: 20px;
+  }
+
+  .name {
+    font-size: 24px;
+  }
+
+  .bio {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background { animation: none; }
+  .link-btn, .theme-toggle { transition: none; }
+  .link-btn::before { display: none; }
+}
